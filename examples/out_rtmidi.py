@@ -38,14 +38,15 @@ notes = [
     (64,2)
 ]
 
-midi_out = rtmidi.MidiOut(name="Song Player")
+if __name__=="__main__":
+    midi_out = rtmidi.MidiOut(name="Song Player")
 
-with midi_out.open_virtual_port(name="out"):
-    T_beat = 60. / bpm # Time for one beat
+    with midi_out.open_virtual_port(name="out"):
+        T_beat = 60. / bpm # Time for one beat
 
-    while True:
-        for num,dur in notes:
-            midi_out.send_message( list(midi.note_on(1,num,64).bytes()  ) )
-            time.sleep(dur * T_beat - T_pause)
-            midi_out.send_message( list(midi.note_off(1,num,64).bytes() ) )
-            time.sleep(T_pause)
+        while True:
+            for num,dur in notes:
+                midi_out.send_message( list(midi.note_on(1,num,64).bytes()  ) )
+                time.sleep(dur * T_beat - T_pause)
+                midi_out.send_message( list(midi.note_off(1,num,64).bytes() ) )
+                time.sleep(T_pause)

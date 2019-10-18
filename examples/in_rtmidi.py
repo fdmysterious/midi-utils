@@ -35,11 +35,12 @@ def callback(ev, data=None):
 
     except: print( "Uknown message" )
 
-with in_port.open_virtual_port("MIDI monitor"):
-    in_port.set_callback( callback   )
-    in_port.ignore_types( sysex=True,timing=True,active_sense=True )
+if __name__=="__main__":
+    with in_port.open_virtual_port("MIDI monitor"):
+        in_port.set_callback( callback   )
+        in_port.ignore_types( sysex=True,timing=True,active_sense=True )
 
-    try:
-        print("Hello world !")
-        while True : time.sleep(1)
-    except KeyboardInterrupt:pass
+        try:
+            print("Hello world !")
+            while True : time.sleep(1)
+        except KeyboardInterrupt:pass

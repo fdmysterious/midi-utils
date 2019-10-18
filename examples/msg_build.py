@@ -15,13 +15,14 @@
 """
 import midi
 
-print( midi.note_off(12, 64, 69) )
-print( midi.note_on (12, 64, 69) )
-print( midi.aftouch (12, 64, 22) )
-print( midi.cc      (12, 43, 38) )
-print( midi.pc      (12, 64 )    )
-print( midi.aftouchc(12, 83 )    )
-print( midi.pitchb  (12, 0.5)    )
-print("--------------------------")
-print( midi.from_bytes(bytes([0x90,29,38])) )
-print( midi.from_bytes( midi.pitchb(15, 0).bytes() ) )
+if __name__=="__main__":
+    print( midi.note_off(12, 64, 69) )
+    print( midi.note_on (12, 64, 69) )
+    print( midi.aftouch (12, 64, 22) )
+    print( midi.cc      (12, 43, 38) )
+    print( midi.pc      (12, 64 )    )
+    print( midi.aftouchc(12, 83 )    )
+    print( midi.pitchb  (12, 0.5)    )
+    print("--------------------------")
+    print( midi.from_bytes(bytes([0x90,29,38])) )
+    print( midi.from_bytes( midi.pitchb(15, 0).bytes() ) )
